@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Routes, Route, Link } from "react-router-dom";
+import Cart from "./components/cart";
 import Categories from "./components/categories";
 import Dashboard from "./components/dashboard";
 import Footer from "./components/footer";
@@ -14,6 +15,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/:category" element={<Categories />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </div>
     </StyledAppContent>
