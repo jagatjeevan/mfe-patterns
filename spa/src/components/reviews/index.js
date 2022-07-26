@@ -10,7 +10,7 @@ function randomIntFromInterval(min, max) {
 
 function mergeReviewImage(images) {
   const reviewList = [];
-  for (let index = 0; index < 15; index++) {
+  for (let index = 0; index < 8; index++) {
     const review = custReview[randomIntFromInterval(0, custReview.length - 1)];
     reviewList.push({
       id: images[index].id,

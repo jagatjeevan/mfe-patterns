@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ProductTileContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 500px));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
   gap: 20px;
   margin-bottom: 50px;
   text-align: center;
@@ -22,7 +22,7 @@ export const ProductImageContainer = styled.div`
 `;
 
 export const ProductTitle = styled.div`
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   line-height: 1.5rem;
   max-height: calc(1.5rem * 2);
   height: calc(1.5rem * 2);
@@ -31,7 +31,8 @@ export const ProductTitle = styled.div`
 
 export const ProductTile = styled.div`
   border: ${(props) => props.theme.borders.productBorderStyle};
-  padding: 25px;
+  border-radius: 5px;
+  overflow: hidden;
 `;
 
 export const StyledProductTile = styled(ProductTile)`
@@ -45,12 +46,12 @@ export const ProductDescription = styled.div`
   line-height: 1rem;
   max-height: calc(0.75rem * 4);
   overflow: hidden;
-  margin-top: 20px;
+  margin: 20px 25px 0;
   text-align: left;
 `;
 
 export const ProductActionContainer = styled.div`
-  margin-top: 20px;
+  margin: 20px 25px 25px;
   display: flex;
   justify-content: space-between;
 `;

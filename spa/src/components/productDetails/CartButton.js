@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { label } from "../../configs/labels";
 
 const CartButton = ({ id, handleUpdateToCart, productsInCart = [] }) => {

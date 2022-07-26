@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { label } from "../../configs/labels";
+import CartButton from '../productDetails/CartButton';
 import {
   StyledProductTile,
   ProductImageContainer,
@@ -11,15 +12,6 @@ import {
 
 const ProductTile = (props) => {
   const { product, cartState, handleUpdateToCart } = props;
-
-  const getCartButton = (id) => {
-    const addToCartText = cartState.productsIds.includes(id)
-      ? label.removeFromCart
-      : label.addToCart;
-    return (
-      <button onClick={() => handleUpdateToCart(id)}>{addToCartText}</button>
-    );
-  };
 
   return (
     <StyledProductTile key={product.id}>
@@ -34,7 +26,11 @@ const ProductTile = (props) => {
         <b>
           {label.currency} {product.price}
         </b>
-        {getCartButton(product.id)}
+        <CartButton
+          id={product.id}
+          handleUpdateToCart={handleUpdateToCart}
+          productsInCart={cartState.productsIds}
+        />
       </ProductActionContainer>
     </StyledProductTile>
   );

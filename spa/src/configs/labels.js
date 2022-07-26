@@ -7,4 +7,5 @@ export const label = {
   removeFromCart: " Remove from Cart",
   currency: "₹",
   customerReviewTitle: "Customer's Review",
+  recommendedForYou: "Recommended for You",
 };

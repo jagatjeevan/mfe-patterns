@@ -1,34 +1,46 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { label } from "../../configs/labels";
-import Categories from "../categories";
-import { DashboardContainer, Loading, CategoryHeading } from "./style";
+import {withCart} from '../../context/cartContext';
+import ProductTile from "../productTile";
+import {
+  DashboardContainer,
+  Loading,
+  StyledProductTileContainer,
+} from "./style";
 
-const Dashboard = () => {
-  const [categories, setCategories] = useState([]);
+const Dashboard = (props) => {
+  const {cartContext} = props;
+  const {state, dispatch} = cartContext;
+  const [products, setProducts] = useState(state.productsIds);
 
   useEffect(async () => {
-    fetch("https://fakestoreapi.com/products/categories")
+    fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
-      .then((json) => setCategories(json));
+      .then((json) => setProducts(json));
   }, []);
 
-  const showCategories = () => {
-    return categories.map((category, index) => (
-      <div>
-        <CategoryHeading key={`${category}-${index}`}>
-          <Link to={`/${category}`}>{category}</Link>
-        </CategoryHeading>
-        <Categories
-          categoryName={category}
-          key={category}
-          isCategoryPassed={true}
-        />
-      </div>
+    const handleUpdateToCart = (id) => {
+      if (state.productsIds.includes(id)) {
+        dispatch.removeFromCart(id);
+      } else {
+        dispatch.addToCart(id);
+      }
+    };
+
+
+  const showProducts = () => {
+    return products.map((product) => (
+      <ProductTile
+        key={product.id}
+        product={product}
+        cartState={state}
+        handleUpdateToCart={handleUpdateToCart}
+      />
     ));
   };
 
-  if (!categories.length) {
+
+  if (!products.length) {
     return (
       <DashboardContainer>
         <Loading>{label.loading}</Loading>
@@ -36,7 +48,11 @@ const Dashboard = () => {
     );
   }
 
-  return <DashboardContainer>{showCategories()}</DashboardContainer>;
+  return (
+    <DashboardContainer>
+      <StyledProductTileContainer>{showProducts()}</StyledProductTileContainer>
+    </DashboardContainer>
+  );
 };
 
-export default Dashboard;
+export default withCart(Dashboard);

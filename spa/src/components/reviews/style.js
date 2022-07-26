@@ -4,6 +4,7 @@ export const ReviewListContainer = styled.article`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
+  margin-bottom: 20px;
 `;
 
 const ReviewContainer = styled.div`
@@ -34,5 +35,6 @@ export const StyledReviewContainer = styled(ReviewContainer)`
     line-height: 1rem;
     max-height: calc(0.75rem * 4);
     overflow: hidden;
+    margin-bottom: 0;
   }
 `;

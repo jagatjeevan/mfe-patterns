@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 
 import { withCart } from "../../context/cartContext";
 import { PageContainer } from "../../styles/common";
+import Recommended from "../recommended";
 import Reviews from "../reviews";
 import Details from "./Details";
 
@@ -17,6 +18,7 @@ const ProductDetails = (props) => {
       `https://fakestoreapi.com/products/${productId}`
     ).then((res) => res.json());
     setProduct(product);
+    dispatch.updateCategory(product.category);
   }, []);
 
   const addToCart = (id) => {
@@ -35,6 +37,7 @@ const ProductDetails = (props) => {
         productsInCart={state.productsIds}
       />
       <Reviews />
+      <Recommended />
     </PageContainer>
   );
 };
