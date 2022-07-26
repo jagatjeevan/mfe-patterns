@@ -11,13 +11,11 @@ const App = () => (
   <AppLayout className="App">
     <Header />
     <StyledAppContent>
-      <div>
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/products/:productId" element={<ProductDetails />} />
         </Routes>
-      </div>
     </StyledAppContent>
     <Footer />
   </AppLayout>
