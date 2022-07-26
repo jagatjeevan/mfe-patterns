@@ -1,25 +1,32 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import { label } from "../../configs/labels";
 import { withCart } from "../../context/cartContext";
 import {
   NoProducts,
   StyledProductTileContainer,
-  CategoryHeading,
   StyledProductTile,
   ProductTitle,
   ProductImageContainer,
   ProductDescription,
   ProductActionContainer,
+  PageContainer,
+  CategoryHeading,
 } from "./style";
 
 const Categories = (props) => {
-  const { categoryName, cartContext } = props;
+  const { categoryName, cartContext, isCategoryPassed } = props;
+  const { category } = useParams();
   const { state, dispatch } = cartContext;
 
   const [products, setProducts] = useState([]);
 
   useEffect(async () => {
-    fetch(`https://fakestoreapi.com/products/category/${categoryName}?limit=10`)
+    const nameOfCategory = isCategoryPassed ? categoryName : category;
+
+    fetch(
+      `https://fakestoreapi.com/products/category/${nameOfCategory}?limit=10`
+    )
       .then((res) => res.json())
       .then((json) => setProducts(json));
 
@@ -65,12 +72,24 @@ const Categories = (props) => {
 
   if (!products.length) return <NoProducts>{label.noProducts}</NoProducts>;
 
-  return (
-    <>
-      <CategoryHeading>{categoryName}</CategoryHeading>
-      <StyledProductTileContainer>{showProducts()}</StyledProductTileContainer>
-    </>
-  );
+  if (isCategoryPassed) {
+    return (
+      <>
+        <StyledProductTileContainer>
+          {showProducts()}
+        </StyledProductTileContainer>
+      </>
+    );
+  } else {
+    return (
+      <PageContainer>
+        <CategoryHeading>{category}</CategoryHeading>
+        <StyledProductTileContainer>
+          {showProducts()}
+        </StyledProductTileContainer>
+      </PageContainer>
+    );
+  }
 };
 
 export default withCart(Categories);

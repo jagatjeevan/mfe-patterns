@@ -15,3 +15,9 @@ export const Loading = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const CategoryHeading = styled.h3`
+  margin-bottom: 30px;
+  border-bottom: ${(props) => props.theme.borders.borderStyle};
+  text-transform: capitalize;
+`;

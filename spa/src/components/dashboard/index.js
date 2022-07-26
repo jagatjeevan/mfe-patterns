@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { label } from "../../configs/labels";
 import Categories from "../categories";
-import { DashboardContainer, Loading } from "./style";
+import { DashboardContainer, Loading, CategoryHeading } from "./style";
 
 const Dashboard = () => {
   const [categories, setCategories] = useState([]);
@@ -13,8 +14,17 @@ const Dashboard = () => {
   }, []);
 
   const showCategories = () => {
-    return categories.map((category) => (
-      <Categories categoryName={category} key={category} />
+    return categories.map((category, index) => (
+      <div>
+        <CategoryHeading key={`${category}-${index}`}>
+          <Link to={`/${category}`}>{category}</Link>
+        </CategoryHeading>
+        <Categories
+          categoryName={category}
+          key={category}
+          isCategoryPassed={true}
+        />
+      </div>
     ));
   };
 
