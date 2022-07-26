@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { label } from "../../configs/labels";
 import { withCart } from "../../context/cartContext";
 import ProductTile from "../productTile";
-import { PageContainer, NoProducts, StyledProductTileContainer } from "./style";
+import {  NoProducts, StyledProductTileContainer } from "./style";
+import { PageContainer } from '../../styles/common';
 
 const Cart = (props) => {
   const { cartContext } = props;

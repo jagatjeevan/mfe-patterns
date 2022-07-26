@@ -11,7 +11,6 @@ const AppContent = styled.article`
 
 export const StyledAppContent = styled(AppContent)`
   > div {
-    height: 500px;
     max-height: calc(100vh - 110px);
     overflow: auto;
   }

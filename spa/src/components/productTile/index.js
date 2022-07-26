@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { label } from "../../configs/labels";
 import {
   StyledProductTile,
@@ -25,7 +26,9 @@ const ProductTile = (props) => {
       <ProductImageContainer>
         <img src={product.image} />
       </ProductImageContainer>
-      <ProductTitle>{product.title}</ProductTitle>
+      <ProductTitle>
+        <Link to={`/products/${product.id}`}>{product.title}</Link>
+      </ProductTitle>
       <ProductDescription>{product.description}</ProductDescription>
       <ProductActionContainer>
         <b>

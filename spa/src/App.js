@@ -5,6 +5,7 @@ import Categories from "./components/categories";
 import Dashboard from "./components/dashboard";
 import Footer from "./components/footer";
 import Header from "./components/header";
+import ProductDetails from "./components/productDetails";
 import { StyledAppContent, AppLayout } from './styles/layout';
 
 const App = () => (
@@ -14,8 +15,9 @@ const App = () => (
       <div>
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          <Route path="/:category" element={<Categories />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/products/:productId" element={<ProductDetails />} />
+          <Route path="/:category" element={<Categories />} />
         </Routes>
       </div>
     </StyledAppContent>

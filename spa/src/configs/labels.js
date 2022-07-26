@@ -6,4 +6,5 @@ export const label = {
   addToCart: "Add to Cart",
   removeFromCart: " Remove from Cart",
   currency: "₹",
+  customerReviewTitle: "Customer's Review",
 };
