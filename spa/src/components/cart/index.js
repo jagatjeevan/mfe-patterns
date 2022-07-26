@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { withCart } from '../../context/cartContext';
-import { PageContainer } from './style';
+import { label } from "../../configs/labels";
+import { withCart } from "../../context/cartContext";
+import ProductTile from "../productTile";
+import { PageContainer, NoProducts, StyledProductTileContainer } from "./style";
 
 const Cart = (props) => {
-    const { cartContext } = props;
-    const {state} = cartContext;
+  const { cartContext } = props;
+  const { state, dispatch } = cartContext;
 
-    const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(async () => {
     const productsInCart = state.productsIds || [];
@@ -20,10 +22,29 @@ const Cart = (props) => {
     );
 
     setProducts(products);
-  }, []);
+  }, [props.cartContext.state]);
 
+    const handleUpdateToCart = (id) => {
+      if (state.productsIds.includes(id)) {
+        dispatch.removeFromCart(id);
+      } else {
+        dispatch.addToCart(id);
+      }
+    };
 
-    return <PageContainer>Cart Page</PageContainer>;
+  const showProducts = () =>
+    products.map((product) => (
+      <ProductTile
+        key={product.id}
+        product={product}
+        cartState={state}
+        handleUpdateToCart={handleUpdateToCart}
+      />
+    ));
+
+  if (!products.length) return <NoProducts>{label.noProducts}</NoProducts>;
+
+  return <PageContainer><StyledProductTileContainer>{showProducts()}</StyledProductTileContainer></PageContainer>;
 };
 
 export default withCart(Cart);

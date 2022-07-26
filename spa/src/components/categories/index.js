@@ -2,14 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { label } from "../../configs/labels";
 import { withCart } from "../../context/cartContext";
+import ProductTile from '../productTile/index';
 import {
   NoProducts,
   StyledProductTileContainer,
-  StyledProductTile,
-  ProductTitle,
-  ProductImageContainer,
-  ProductDescription,
-  ProductActionContainer,
   PageContainer,
   CategoryHeading,
 } from "./style";
@@ -43,30 +39,14 @@ const Categories = (props) => {
     }
   };
 
-  const getCartButton = (id) => {
-    const addToCartText = state.productsIds.includes(id)
-      ? label.removeFromCart
-      : label.addToCart;
-    return (
-      <button onClick={() => handleUpdateToCart(id)}>{addToCartText}</button>
-    );
-  };
-
   const showProducts = () => {
     return products.map((product) => (
-      <StyledProductTile key={product.id}>
-        <ProductImageContainer>
-          <img src={product.image} />
-        </ProductImageContainer>
-        <ProductTitle>{product.title}</ProductTitle>
-        <ProductDescription>{product.description}</ProductDescription>
-        <ProductActionContainer>
-          <b>
-            {label.currency} {product.price}
-          </b>
-          {getCartButton(product.id)}
-        </ProductActionContainer>
-      </StyledProductTile>
+      <ProductTile
+        key={product.id}
+        product={product}
+        cartState={state}
+        handleUpdateToCart={handleUpdateToCart}
+      />
     ));
   };
 
