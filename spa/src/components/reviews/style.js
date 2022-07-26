@@ -5,6 +5,8 @@ export const ReviewListContainer = styled.article`
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
   margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: ${(props) => props.theme.borders.productBorderStyle};
 `;
 
 const ReviewContainer = styled.div`

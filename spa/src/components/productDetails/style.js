@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ProductDetailContainer = styled.article`
   display: grid;
-  grid-template-columns: minmax(200px, 1fr) 1fr;
+  grid-template-columns: minmax(220px, 350px) 1fr;
   grid-gap: 20px;
   padding-bottom: 20px;
   border-bottom: ${(props) => props.theme.borders.productBorderStyle};

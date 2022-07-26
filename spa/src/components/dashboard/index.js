@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { label } from "../../configs/labels";
 import {withCart} from '../../context/cartContext';
+import { StyledProductTileContainer } from "../../styles/common";
 import ProductTile from "../productTile";
 import {
   DashboardContainer,
   Loading,
-  StyledProductTileContainer,
 } from "./style";
 
 const Dashboard = (props) => {

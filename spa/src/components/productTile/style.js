@@ -1,19 +1,5 @@
 import styled from "styled-components";
 
-export const ProductTileContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
-  gap: 20px;
-  margin-bottom: 50px;
-  text-align: center;
-`;
-
-export const StyledProductTileContainer = styled(ProductTileContainer)`
-  & img {
-    width: 100%;
-  }
-`;
-
 export const ProductImageContainer = styled.div`
   max-height: 150px;
   overflow: hidden;
@@ -27,6 +13,7 @@ export const ProductTitle = styled.div`
   max-height: calc(1.5rem * 2);
   height: calc(1.5rem * 2);
   overflow: hidden;
+  margin: 0 25px;
 `;
 
 export const ProductTile = styled.div`

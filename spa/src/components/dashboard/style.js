@@ -21,17 +21,3 @@ export const CategoryHeading = styled.h3`
   border-bottom: ${(props) => props.theme.borders.borderStyle};
   text-transform: capitalize;
 `;
-
-export const ProductTileContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  margin-bottom: 50px;
-  text-align: center;
-`;
-
-export const StyledProductTileContainer = styled(ProductTileContainer)`
-  & img {
-    width: 100%;
-  }
-`;

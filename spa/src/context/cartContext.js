@@ -16,6 +16,7 @@ const reducer = (state, action) => {
       const updatedProductIds = state.productsIds.filter(
         (item) => item !== parseInt(action.payload, 10)
       );
+      return { ...state, productsIds: updatedProductIds };
 
     case "updateCategory":
       return {
