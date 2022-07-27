@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { label } from "../../configs/labels";
 import { withCart } from "../../context/cartContext";
 import {
@@ -12,6 +13,7 @@ import {
 const Header = (props) => {
   const { cartContext } = props;
   const { state } = cartContext;
+  console.log("header", state);
   const [productsInCart, setProductsInCart] = useState(state.productsIds);
 
   useEffect(() => {
