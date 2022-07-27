@@ -27,3 +27,11 @@ npm start
 ```
 
 To check which port it opens, check for the `<folder>/config/wepack.dev.js` file.
+
+## Whenever you duplicate the scaffolding folder, do check on
+- package.json
+    - change the `name` and `main`. Keep it same as the folder name
+- config/webpack.dev.js
+    - change the port number
+- public/index.html : Change the div id
+- src/index.js : Change the div id
