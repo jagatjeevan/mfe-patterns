@@ -9,7 +9,8 @@ server.use(bodyParser.json());
 
 var layoutServer = "http://localhost:3000",
   catalogServer = "http://localhost:3001",
-  reviewServer = "http://localhost:3002";
+  reviewServer = "http://localhost:3002",
+  recommendServer = "http://localhost:3003";
 
 function match(domain) {
   return proxy(domain, {
@@ -23,6 +24,7 @@ function match(domain) {
 server.use("/cart", match(layoutServer));
 server.use("/products", match(catalogServer));
 server.use("/reviews", match(reviewServer));
+server.use("/recommend", match(recommendServer));
 server.use("/", match(catalogServer));
 
 server.listen(2222, (err) => {
