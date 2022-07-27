@@ -17,3 +17,12 @@ npm start
 ```
 
 The application would start on `http://localhost:3000`.
+
+## Running different mfes
+```
+cd <folder>
+npm install
+npm start
+```
+
+To check which port it opens, check for the `<folder>/config/wepack.dev.js` file.
