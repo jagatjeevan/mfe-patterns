@@ -10,6 +10,10 @@ We have a monolithic codebase inside spa folder. We need to slice our codebase w
 - We have used context to pass data from page to page. Ignore the data related things until it is breaking the application.
 - We have a dummy repo. Use the repo for new mfe rather than creating using create-react-app. This is to help us with time involved incase of incompatibility of versions.
 
+## Pre-requisites
+Node version : v14.18.x. 
+Npm version : 6.14.x
+
 ## Running the application
 ```
 cd spa
