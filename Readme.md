@@ -8,3 +8,12 @@ We have a monolithic codebase inside spa folder. We need to slice our codebase w
 - Check all functionality is working.
 - We have used context to pass data from page to page. Ignore the data related things until it is breaking the application.
 - We have a dummy repo. Use the repo for new mfe rather than creating using create-react-app. This is to help us with time involved incase of incompatibility of versions.
+
+## Running the application
+```
+cd spa
+npm install
+npm start
+```
+
+The application would start on `http://localhost:3000`.
