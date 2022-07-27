@@ -8,7 +8,8 @@ server.disable("x-powered-by");
 server.use(bodyParser.json());
 
 var layoutServer = "http://localhost:3000",
-  catalogServer = "http://localhost:3001";
+  catalogServer = "http://localhost:3001",
+  reviewServer = "http://localhost:3002";
 
 function match(domain) {
   return proxy(domain, {
@@ -20,8 +21,8 @@ function match(domain) {
 }
 
 server.use("/cart", match(layoutServer));
-
 server.use("/products", match(catalogServer));
+server.use("/reviews", match(reviewServer));
 server.use("/", match(catalogServer));
 
 server.listen(2222, (err) => {
