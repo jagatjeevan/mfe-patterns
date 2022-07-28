@@ -1,0 +1,25 @@
+{
+  "name": "xconf-mfe",
+  "version": "1.0.0",
+  "description": "## Context: We have a monolithic codebase inside spa folder. We need to slice our codebase w.r.t routes. One mfe can be product list and product details while other can be the whole application. This way we can gradually move to separate mfes.",
+  "main": "index.js",
+  "scripts": {
+    "prepare-spa": "cd spa && npm i",
+    "prepare-products": "cd products && npm i",
+    "prepare-recommend": "cd recommend && npm i",
+    "prepare-review": "cd review && npm i",
+    "prepare-route-handler": "cd route-handler && npm i",
+    "prepare-all": "npm run prepare-spa && npm run prepare-products && npm run prepare-recommend && npm run prepare-review && npm run prepare-route-handler"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jagatjeevan/xconf-mfe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jagatjeevan/xconf-mfe/issues"
+  },
+  "homepage": "https://github.com/jagatjeevan/xconf-mfe#readme"
+}
