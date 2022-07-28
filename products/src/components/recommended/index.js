@@ -1,46 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { label } from "../../configs/labels";
-import { withCart } from "../../context/cartContext";
-import { StyledProductTileContainer } from "../../styles/common";
-import ProductTile from "../productTile";
+import React, { useEffect } from "react";
 
-const Recommended = (props) => {
-  const { cartContext } = props;
-  const { state, dispatch } = cartContext;
-  const [products, setProducts] = useState([]);
+function importScript() {
+  if (window && document) {
+    const script = document.createElement("script");
+    const body = document.getElementsByTagName("body")[0];
+    script.id = "reviewScript";
+    script.src = "http://localhost:3003/recommend.bundle.js";
+    body.appendChild(script);
+  }
+}
 
-  useEffect(async () => {
-    const { category } = state;
-    fetch(`https://fakestoreapi.com/products/category/${category}`)
-      .then((res) => res.json())
-      .then((json) => setProducts(json));
-  }, [props.cartContext.state.category]);
+const Recommended = () => {
+  useEffect(() => {
+    importScript();
+  }, []);
 
-  const handleUpdateToCart = (id) => {
-    if (state.productsIds.includes(id)) {
-      dispatch.removeFromCart(id);
-    } else {
-      dispatch.addToCart(id);
-    }
-  };
-
-  const showProducts = () => {
-    return products.map((product) => (
-      <ProductTile
-        key={product.id}
-        product={product}
-        cartState={state}
-        handleUpdateToCart={handleUpdateToCart}
-      />
-    ));
-  };
-
-  return (
-    <>
-      <h3>{label.recommendedForYou}</h3>
-      <StyledProductTileContainer>{showProducts()}</StyledProductTileContainer>
-    </>
-  );
+  return <div id="recommend-root"></div>;
 };
 
-export default withCart(Recommended);
+export default Recommended;
