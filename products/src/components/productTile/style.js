@@ -42,3 +42,25 @@ export const ProductActionContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
+export const StyledProductActionContainer = styled(ProductActionContainer)`
+  & span {
+    font-size: 1.5rem;
+  }
+  & strong {
+    position: relative;
+    top: -5px;
+  }
+`;
+
+export const Rating = styled.div`
+  font-size: 11px;
+`;
+
+export const ReviewCount = styled.div`
+  font-size: 11px;
+`;
+
+export const RatingContainer = styled.div`
+  text-align: right;
+`;
