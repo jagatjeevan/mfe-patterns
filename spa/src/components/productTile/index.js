@@ -1,17 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { label } from "../../configs/labels";
-import CartButton from '../productDetails/CartButton';
 import {
+  Rating,
+  ReviewCount,
+  RatingContainer,
   StyledProductTile,
   ProductImageContainer,
   ProductTitle,
   ProductDescription,
-  ProductActionContainer,
+  StyledProductActionContainer,
 } from "./style";
 
 const ProductTile = (props) => {
-  const { product, cartState, handleUpdateToCart } = props;
+  const { product } = props;
 
   return (
     <StyledProductTile key={product.id}>
@@ -22,16 +24,15 @@ const ProductTile = (props) => {
         <Link to={`/products/${product.id}`}>{product.title}</Link>
       </ProductTitle>
       <ProductDescription>{product.description}</ProductDescription>
-      <ProductActionContainer>
+      <StyledProductActionContainer>
         <b>
-          {label.currency} {product.price}
+          <strong>{label.currency}</strong> <span>{product.price}</span>
         </b>
-        <CartButton
-          id={product.id}
-          handleUpdateToCart={handleUpdateToCart}
-          productsInCart={cartState.productsIds}
-        />
-      </ProductActionContainer>
+        <RatingContainer>
+          <Rating>{product.rating.rate} out of 5</Rating>
+          <ReviewCount>Reviews : {product.rating.count}</ReviewCount>
+        </RatingContainer>
+      </StyledProductActionContainer>
     </StyledProductTile>
   );
 };
