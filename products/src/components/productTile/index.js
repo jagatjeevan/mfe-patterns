@@ -30,7 +30,7 @@ const ProductTile = (props) => {
         </b>
         <RatingContainer>
           <Rating>{product.rating.rate} out of 5</Rating>
-          <ReviewCount>Reviews : {product.rating.count}</ReviewCount>
+          <ReviewCount>Reviews : {product?.rating?.count}</ReviewCount>
         </RatingContainer>
       </StyledProductActionContainer>
     </StyledProductTile>
