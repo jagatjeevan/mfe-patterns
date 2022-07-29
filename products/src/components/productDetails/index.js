@@ -1,32 +1,39 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
-import { withCart } from "../../context/cartContext";
 import { PageContainer } from "../../styles/common";
 import Recommended from "../recommended";
 import Reviews from "../reviews";
 import Details from "./Details";
 
-const ProductDetails = (props) => {
-  const { cartContext } = props;
-  const { state, dispatch } = cartContext;
+const ProductDetails = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState({});
+  const [storedIds, setStoredIds] = useState(
+    JSON.parse(window.localStorage.getItem("products") || "[]")
+  );
+  const [category, setCategory] = useState(
+    window.localStorage.getItem("category") || ""
+  );
 
   useEffect(async () => {
     const product = await fetch(
       `https://fakestoreapi.com/products/${productId}`
     ).then((res) => res.json());
     setProduct(product);
-    dispatch.updateCategory(product.category);
+    window.localStorage.setItem("category", product.category);
+    setCategory(product.category);
   }, []);
 
   const addToCart = (id) => {
-    if(state.productsIds.includes(id)) {
-        dispatch.removeFromCart(id);
+    let updatedIds;
+    if (storedIds.includes(id)) {
+      updatedIds = storedIds.filter((item) => item !== id);
     } else {
-        dispatch.addToCart(id);
+      updatedIds = [...storedIds, id];
     }
+    window.localStorage.setItem("products", JSON.stringify(updatedIds));
+    setStoredIds(updatedIds);
   };
 
   return (
@@ -34,7 +41,7 @@ const ProductDetails = (props) => {
       <Details
         product={product}
         handleUpdateToCart={addToCart}
-        productsInCart={state.productsIds}
+        productsInCart={storedIds}
       />
       <Reviews />
       <Recommended />
@@ -42,4 +49,4 @@ const ProductDetails = (props) => {
   );
 };
 
-export default withCart(ProductDetails);
+export default ProductDetails;

@@ -6,11 +6,15 @@ import ProductTile from "../productTile";
 const Recommended = () => {
   const [products, setProducts] = useState([]);
 
-  useEffect(async () => {
-    const category = "jewelery";
+  const fetchCategory = () => {
+    const category = window.localStorage.getItem("category");
     fetch(`https://fakestoreapi.com/products/category/${category}`)
       .then((res) => res.json())
       .then((json) => setProducts(json));
+  }
+
+  useEffect(() => {
+    setTimeout(fetchCategory, 1000);
   }, []);
 
   const handleUpdateToCart = () => {

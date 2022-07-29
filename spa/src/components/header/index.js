@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { label } from "../../configs/labels";
-import { withCart } from "../../context/cartContext";
 import {
   AppHeader,
   Count,
@@ -9,14 +8,10 @@ import {
   StyledCartButton,
 } from "./style";
 
-const Header = (props) => {
-  const { cartContext } = props;
-  const { state } = cartContext;
-  const [productsInCart, setProductsInCart] = useState(state.productsIds);
-
-  useEffect(() => {
-    setProductsInCart(state.productsIds);
-  }, [props.cartContext.state])
+const Header = () => {
+  const [productsInCart] = useState(
+    JSON.parse(window.localStorage.getItem("products")) || []
+  );
 
   const getCount = () =>
     productsInCart.length ? <Count>{productsInCart.length}</Count> : null;
@@ -38,4 +33,4 @@ const Header = (props) => {
   );
 };
 
-export default withCart(Header);
+export default Header;

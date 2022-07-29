@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { label } from "../../configs/labels";
 import {
   Rating,
@@ -21,7 +20,7 @@ const ProductTile = (props) => {
         <img src={product.image} />
       </ProductImageContainer>
       <ProductTitle>
-        <Link to={`/products/${product.id}`}>{product.title}</Link>
+        <a href={`/products/${product.id}`}>{product.title}</a>
       </ProductTitle>
       <ProductDescription>{product.description}</ProductDescription>
       <StyledProductActionContainer>
@@ -30,7 +29,7 @@ const ProductTile = (props) => {
         </b>
         <RatingContainer>
           <Rating>{product.rating.rate} out of 5</Rating>
-          <ReviewCount>Reviews : {product.rating.count}</ReviewCount>
+          <ReviewCount>Reviews : {product?.rating?.count}</ReviewCount>
         </RatingContainer>
       </StyledProductActionContainer>
     </StyledProductTile>
