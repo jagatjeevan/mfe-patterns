@@ -6,7 +6,7 @@ import ProductTile from "../productTile";
 
 const Recommended = (props) => {
   const { cartContext } = props;
-  const { state, dispatch } = cartContext;
+  const { state } = cartContext;
   const [products, setProducts] = useState([]);
 
   useEffect(async () => {
@@ -16,21 +16,11 @@ const Recommended = (props) => {
       .then((json) => setProducts(json));
   }, [props.cartContext.state.category]);
 
-  const handleUpdateToCart = (id) => {
-    if (state.productsIds.includes(id)) {
-      dispatch.removeFromCart(id);
-    } else {
-      dispatch.addToCart(id);
-    }
-  };
-
   const showProducts = () => {
     return products.map((product) => (
       <ProductTile
         key={product.id}
         product={product}
-        cartState={state}
-        handleUpdateToCart={handleUpdateToCart}
       />
     ));
   };
