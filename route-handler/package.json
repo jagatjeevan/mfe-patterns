@@ -4,7 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "run-server": "node server.js"
+    "prepare-spa": "cd spa && npm i",
+    "prepare-products": "cp -R spa/node_modules products/",
+    "prepare-recommend": "cp -R spa/node_modules recommend/",
+    "prepare-review": "cp -R spa/node_modules review/",
+    "prepare-route-handler": "cp -R spa/node_modules route-handler/",
+    "prepare-all": "npm run prepare-spa && npm run prepare-products && npm run prepare-recommend && npm run prepare-review && npm run prepare-route-handler",
+    "start-mfe": "cd spa && npm start",
+    "start-products": "cd products && npm start",
+    "start-recommend": "cd recommend && npm start",
+    "start-review": "cd review && npm start",
+    "start-server": "cd route-handler && node server.js"
   },
   "keywords": [],
   "author": "",
