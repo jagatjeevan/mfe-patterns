@@ -4,10 +4,16 @@
   "description": "We have a monolithic codebase inside spa folder. We need to slice our codebase w.r.t routes. One mfe can be product list and product details while other can be the whole application. This way we can gradually move to separate mfes.",
   "main": "index.js",
   "scripts": {
-    "build-mfe": "cd spa && npm install",
+    "prepare-spa": "cd spa && npm i",
+    "prepare-products": "cp -R spa/node_modules products/",
+    "prepare-recommend": "cp -R spa/node_modules recommend/",
+    "prepare-review": "cp -R spa/node_modules review/",
+    "prepare-route-handler": "cp -R spa/node_modules route-handler/",
+    "prepare-all": "npm run prepare-spa && npm run prepare-products && npm run prepare-recommend && npm run prepare-review && npm run prepare-route-handler",
     "start-mfe": "cd spa && npm start",
-    "build-products": "cp -R spa/node_modules products/",
     "start-products": "cd products && npm start",
+    "start-recommend": "cd recommend && npm start",
+    "start-review": "cd review && npm start",
     "start-server": "cd route-handler && node server.js"
   },
   "repository": {
