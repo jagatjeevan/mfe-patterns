@@ -12,9 +12,7 @@ const ProductDetails = () => {
   const [storedIds, setStoredIds] = useState(
     JSON.parse(window.localStorage.getItem("products") || "[]")
   );
-  const [category, setCategory] = useState(
-    window.localStorage.getItem("category") || ""
-  );
+  const [category, setCategory] = useState("");
 
   useEffect(async () => {
     const product = await fetch(
@@ -29,8 +27,15 @@ const ProductDetails = () => {
     let updatedIds;
     if (storedIds.includes(id)) {
       updatedIds = storedIds.filter((item) => item !== id);
+      const removeFromCartEvent = new CustomEvent("REMOVE_FROM_CART", {
+        detail: { productId: id },
+      });
+      window.dispatchEvent(removeFromCartEvent);
     } else {
-      updatedIds = [...storedIds, id];
+      const event = new CustomEvent("ADD_TO_CART", {
+        detail: { productId: id },
+      });
+      window.dispatchEvent(event);
     }
     window.localStorage.setItem("products", JSON.stringify(updatedIds));
     setStoredIds(updatedIds);
