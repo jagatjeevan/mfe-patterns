@@ -14,4 +14,10 @@ module.exports = {
       }
     ]
   },
+  output: {
+    hashFunction: 'xxhash64',
+  },
+  experiments: {
+    futureDefaults: true,
+  },
 };
