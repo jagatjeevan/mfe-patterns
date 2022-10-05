@@ -1,5 +1,5 @@
 {
-  "name": "xconf-mfe",
+  "name": "mfe-patterns",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jagatjeevan/xconf-mfe.git"
+    "url": "git+https://github.com/jagatjeevan/mfe-patterns.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jagatjeevan/xconf-mfe/issues"
+    "url": "https://github.com/jagatjeevan/mfe-patterns/issues"
   },
-  "homepage": "https://github.com/jagatjeevan/xconf-mfe#readme",
+  "homepage": "https://github.com/jagatjeevan/mfe-patterns#readme",
   "dependencies": {
     "react": "17.0.1",
     "react-dom": "17.0.1",
