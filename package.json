@@ -1,5 +1,5 @@
 {
-  "name": "xconf-mfe",
+  "name": "mfe-patterns",
   "version": "1.0.0",
   "description": "## Context: We have a monolithic codebase inside spa folder. We need to slice our codebase w.r.t routes. One mfe can be product list and product details while other can be the whole application. This way we can gradually move to separate mfes.",
   "main": "index.js",
@@ -14,13 +14,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jagatjeevan/xconf-mfe.git"
+    "url": "git+https://github.com/jagatjeevan/mfe-patterns.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jagatjeevan/xconf-mfe/issues"
+    "url": "https://github.com/jagatjeevan/mfe-patterns/issues"
   },
-  "homepage": "https://github.com/jagatjeevan/xconf-mfe#readme"
+  "homepage": "https://github.com/jagatjeevan/mfe-patterns#readme"
 }
